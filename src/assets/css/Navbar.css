@@ -1,0 +1,91 @@
+.nav-header {
+  padding: 0px 5%;
+  background-color: #ffff;
+  z-index: 9999;
+}
+
+.nav-bar {
+  padding: 20px 0;
+}
+
+.logo {}
+
+.menu {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 30px;
+  list-style: none;
+}
+
+.menu-item {
+  display: inline-block;
+  padding: 10px 30px;
+}
+
+.right-side .menu-item {
+  padding: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: #e8dcce;
+}
+
+.menu-icon {
+  /* margin-left: -55px; */
+  display: none;
+}
+
+.menu-icon img {
+  width: 30px;
+  height: 25px;
+}
+
+.mobile-menu {
+  display: none;
+  list-style: none;
+}
+
+.mobile-menu-item {
+  padding: 12px 0px;
+}
+
+.cart-text {
+  margin-top: 5px;
+  margin-left: -16px;
+  position: absolute;
+  font-size: 13px;
+  background: orange;
+  border-radius: 9px;
+  line-height: 8px;
+  padding: 4px;
+}
+
+@media only screen and (max-width: 1075px) {
+  .mobile-menu {
+    margin-left: -28px;
+    display: block;
+    list-style: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+  .sub-menu {
+    width: 0px;
+    position: relative;
+    padding-top: 0;
+    margin-left: 0px;
+    list-style: none;
+  }
+  .menu {
+    display: none;
+    margin-top: 5px;
+    margin-left: -45vw;
+    text-align: left;
+  }
+}

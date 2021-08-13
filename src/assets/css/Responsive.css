@@ -1,0 +1,25 @@
+@media only screen and (max-width: 500px) {
+  .fb-100 {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .container {
+    width: 95%;
+  }
+  .footer-link {
+    margin-left: -20px;
+  }
+  .footer-link li {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin-left: -17px;
+  }
+  .footer-logo img {
+    max-width: 270px;
+    max-height: 170px;
+  }
+  .social-media {
+    text-align: center;
+  }
+}
