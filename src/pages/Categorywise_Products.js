@@ -4,7 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import Newsletter from "../Components/Newsletter";
 const proxy = process.env.REACT_APP_PROXY;
 const ck = process.env.REACT_APP_CK;
@@ -28,6 +28,18 @@ const fetchcategorywiseproductsdata = async (x) => {
 };
 
 export default function Categorywise_Products(props) {
+  const queryClient = useQueryClient();
+  // var categoryimage;
+  // if (typeof queryClient.getQueryData("categorydata") !== "undefined") {
+  //   categoryimage = queryClient
+  //     .getQueryData("categorydata")
+  //     .find((d) => d.id == props.match.params.categoryId);
+  // }
+  var { data1, status1 } = queryClient.fetch(["categorydata"]);
+  console.log(data1)
+
+  // console.log(categoryimage.image.src);
+
   const [pagenumber, setpagenumber] = useState(1);
   useEffect(() => {}, [pagenumber]);
   const { data, status } = useQuery(
@@ -73,11 +85,12 @@ export default function Categorywise_Products(props) {
         <div
           className="hero-area"
           style={{
-            backgroundImage: `url(${hero1})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "100% 100%",
-            height: "250px",
-            width: "100%",
+            // backgroundImage: `url(${categoryimage.image.src})`,
+            // backgroundRepeat: "no-repeat",
+            // backgroundSize: "100% 100%",
+            // backgroundBlendMode:"screen",
+            // height: "250px",
+            // width: "100%",
           }}
         >
           <div className="hero-para">

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import logo from "../assets/images/background/logo.PNG";
+import logo from "../assets/images/background/logo.png";
 
 export default function Success() {
   const proxy = process.env.REACT_APP_PROXY;

@@ -1,6 +1,6 @@
 import React from "react";
 import "../assets/css/Footer.css";
-import logo from "../assets/images/background/logo.PNG";
+import logo from "../assets/images/background/logo.png";
 import fb from "../assets/images/icons/fb.webp";
 import insta from "../assets/images/icons/insta.webp";
 import twiter from "../assets/images/icons/twiter.webp";
@@ -18,7 +18,7 @@ export default function Footer() {
             <p>Mirpur Road, Shyamoli, Dhaka-1207, Bangladesh</p>
           </div>
         </div>
-        <div className="col-3  fb-100">
+        <div className="col-2  fb-100">
           <div>
             <h3 className="title"> </h3>
             <p>example@example.com</p>
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="col-3 fb-100">
+        <div className="col-2 fb-100">
           <h3 className="title">Useful Links</h3>
           <ul className="footer-link">
             <HashLink smooth to="/site_map/#">
@@ -43,7 +43,13 @@ export default function Footer() {
 
         <div className="col-3 footer-logo fb-100">
           <img src={logo} alt="Logo"></img>
+          <div className="row social-links">
+            <img src={fb} alt="facebook-img"></img>
+            <img src={insta} alt="instagram-img"></img>
+            <img src={youtube} alt="youtube-img"></img>
+          </div>
         </div>
+        {/* <div className="col-2"></div> */}
       </div>
     </div>
   );

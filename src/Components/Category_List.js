@@ -18,7 +18,6 @@ const fetchcategory = async (x) => {
 
 export default function Category_List() {
   var { data, status } = useQuery(["categorydata"], fetchcategory);
-  // console.log(data);
   return (
     <>
       {typeof data !== "undefined" ? (

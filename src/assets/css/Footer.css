@@ -17,6 +17,9 @@
   color: black;
   height: 30px;
 }
+.footer-logo{
+  text-align: center;
+}
 .footer-logo img {
   max-width: 200px;
   max-height: 170px;
@@ -49,18 +52,11 @@
   padding-bottom: 5px;
   font-size: 12px;
 }
-.social-media {
-  padding: 10px;
-  text-align: left;
+.social-links{
+  justify-content: center;
 }
-
-.social-media p {
-  font-family: "Julius Sans One";
-  padding-bottom: 10px;
-  font-size: 18px;
-}
-
-.social-media li {
-  padding: 10px 5px 0px 0px;
-  display: inline;
+.social-links img{
+width: 20px;
+height: 20px;
+margin: 5px;
 }

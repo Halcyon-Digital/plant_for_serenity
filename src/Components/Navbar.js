@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/css/Navbar.css";
-import logo from "../assets/images/background/logo.PNG";
+import logo from "../assets/images/background/logo.png";
 import search from "../assets/images/icons/search-icon.PNG";
 import cart from "../assets/images/icons/cart-icon.PNG";
 import menu from "../assets/images/icons/menu.webp";
