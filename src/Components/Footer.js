@@ -42,6 +42,7 @@ export default function Footer() {
         </div>
 
         <div className="col-3 footer-logo fb-100">
+          <p className="title"> </p>
           <img src={logo} alt="Logo"></img>
           <div className="row social-links">
             <img src={fb} alt="facebook-img"></img>

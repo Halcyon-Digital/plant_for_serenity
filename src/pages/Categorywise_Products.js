@@ -6,6 +6,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery, useQueryClient } from "react-query";
 import Newsletter from "../Components/Newsletter";
+import { type } from "jquery";
+import { HashLink } from "react-router-hash-link";
 const proxy = process.env.REACT_APP_PROXY;
 const ck = process.env.REACT_APP_CK;
 const cs = process.env.REACT_APP_CS;
@@ -16,7 +18,7 @@ const fetchcategorywiseproductsdata = async (x) => {
   var catid = x.queryKey[1];
   var page = x.queryKey[2];
   const data = await fetch(
-    `${proxy}wc/v3/products?category=${catid}&page=${page}&per_page=10&orderby=price&order=desc`,
+    `${proxy}wc/v3/products?category=${catid}&page=${page}&per_page=8&orderby=price&order=desc`,
     {
       headers: new Headers({
         Authorization: `Basic ${window.btoa(`${ck}:${cs}`)}`,
@@ -29,14 +31,12 @@ const fetchcategorywiseproductsdata = async (x) => {
 
 export default function Categorywise_Products(props) {
   const queryClient = useQueryClient();
-  // var categoryimage;
-  // if (typeof queryClient.getQueryData("categorydata") !== "undefined") {
-  //   categoryimage = queryClient
-  //     .getQueryData("categorydata")
-  //     .find((d) => d.id == props.match.params.categoryId);
-  // }
-  var { data1, status1 } = queryClient.fetch(["categorydata"]);
-  console.log(data1)
+  var categoryimage;
+  if (typeof queryClient.getQueryData("categorydata") !== "undefined") {
+    categoryimage = queryClient
+      .getQueryData("categorydata")
+      .find((d) => d.id == props.match.params.categoryId);
+  }
 
   // console.log(categoryimage.image.src);
 
@@ -81,16 +81,21 @@ export default function Categorywise_Products(props) {
   }
   return (
     <>
+      <section id={props.location.hash.replace("#", "").replace("%20", " ")}>
       <div className="main categorywise-product-page">
         <div
           className="hero-area"
           style={{
-            // backgroundImage: `url(${categoryimage.image.src})`,
+            backgroundImage: `url(${
+              typeof categoryimage === "undefined"
+                ? hero1
+                : categoryimage.image.src
+            })`,
             // backgroundRepeat: "no-repeat",
             // backgroundSize: "100% 100%",
-            // backgroundBlendMode:"screen",
-            // height: "250px",
-            // width: "100%",
+            backgroundBlendMode: "screen",
+            height: "250px",
+            width: "100%",
           }}
         >
           <div className="hero-para">
@@ -150,8 +155,9 @@ export default function Categorywise_Products(props) {
               <div className="row">
                 {data.map((product, key) => (
                   <div key={key} className="card-item">
-                    <Link
+                    <HashLink
                       style={{ textDecoration: "none" }}
+                      smooth
                       to={{
                         pathname: `/product/${product.id}`,
                         hash: `${product.name}`,
@@ -211,7 +217,7 @@ export default function Categorywise_Products(props) {
                       <span
                         style={{ float: "right", paddingRight: "15px" }}
                       ></span>
-                    </Link>
+                    </HashLink>
                   </div>
                 ))}
               </div>
@@ -241,6 +247,7 @@ export default function Categorywise_Products(props) {
           )}
         </div>
       </div>
+      </section>
       <Newsletter></Newsletter>
     </>
   );

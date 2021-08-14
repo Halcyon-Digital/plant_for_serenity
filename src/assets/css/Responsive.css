@@ -1,4 +1,17 @@
 @media only screen and (max-width: 500px) {
+  .main{
+    padding-top: 70px;
+  }
+  .container {
+    padding: 0px;
+  }
+  .title {
+    font-size: 25px;
+    margin: 25px auto;
+    position: relative;
+    line-height: 1;
+    color: #000;
+  }
   .fb-100 {
     flex-basis: 100%;
     text-align: center;
@@ -20,6 +33,64 @@
     max-height: 170px;
   }
   .social-media {
+    text-align: center;
+  }
+  .home-page {
+    margin-top: 0px;
+  }
+  .product-container {
+    margin-top: 0px;
+  }
+  .blog-section {
+    margin-top: 10px;
+  }
+  .category-header .col-2 {
+    display: none;
+  }
+  .card-item {
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+  }
+  .blog-section .react-multi-carousel-list ul li .card-item {
+    width: 325px;
+  }
+  .product-container .card-item {
+    width: 150px;
+    height: 270px;
+    margin: 0px;
+  }
+  .product-container .card-item .product-images {
+    width: 160px;
+  }
+  .category-container {
+    margin-top: 0px;
+  }
+  .category-container .card-item {
+    width: 160px;
+    height: 160px;
+    margin: 5px;
+  }
+  .newsletter-section input {
+    width: 200PX;
+  }
+  .newsletter-section .btn {
+    width: 135px;
+  }
+  .product-details .product-description {
+    width: 100%;
+    padding-left: 0px;
+  }
+  .product-description .btn {
+    width: 230px;
+  }
+  .cart-page .btn {
+    margin: 30px 20px;
+  }
+  .cross-button{
+    margin-top:-15px;
+  }
+  .cart-summery .col-6{
     text-align: center;
   }
 }

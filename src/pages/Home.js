@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="main">
+    <section id="">
+      <div className="main">
       <Adds_Slider></Adds_Slider>
       <div className="container">
         <div className="home-page">
@@ -19,7 +20,7 @@ export default function Home() {
             <div className="col-6">
               <img src={placeholder}></img>
             </div>
-            <div className="col-4">
+            <div className="col-4 fb-100">
               <h2>Most Populer Plant Collections</h2>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure
@@ -40,5 +41,6 @@ export default function Home() {
       </div>
       <Newsletter></Newsletter>
     </div>
+    </section>
   );
 }

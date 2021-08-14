@@ -525,7 +525,7 @@ export default function Cart() {
             </div>
           </form>
         </div>
-        <div className="col-4 summery-section">
+        <div className="col-4 summery-section fb-100">
           <div className="payment-section">
             <h2>Payment Method</h2> <br />
             <input

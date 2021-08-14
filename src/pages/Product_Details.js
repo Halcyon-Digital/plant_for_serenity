@@ -29,10 +29,7 @@ export default function Product_details(props) {
     fetchdetailsdata,
     {
       initialData: () => {
-        if (
-          typeof queryClient.getQueryData("reservedData") !==
-          "undefined"
-        ) {
+        if (typeof queryClient.getQueryData("reservedData") !== "undefined") {
           return queryClient
             .getQueryData("reservedData")
             .find((d) => d.id == props.match.params.productId);
@@ -161,120 +158,125 @@ export default function Product_details(props) {
 
   return (
     <>
-      <div className="main">
-        <div className="container productpage-container">
-          <div className="product-details">
-            <div className="row">
-              <div className="col-4 ">
-                <div className="image-container">
-                  <div
-                    className="img-magnifier-container"
-                    onMouseEnter={() => {
-                      magnify("big-image", 1.5);
-                    }}
-                    onMouseLeave={() => {
-                      if (
-                        document.getElementById("img-magnifier-glass") !== null
-                      ) {
-                        document.getElementById("img-magnifier-glass").remove();
-                      }
-                    }}
-                  >
-                    <img
-                      alt={product.name}
-                      id="big-image"
-                      className="big-image"
-                      src={
-                        typeof product.images[0] === "undefined"
-                          ? ""
-                          : product.images[0].src
-                      }
-                    ></img>
+      <section id={product.name}>
+        <div className="main">
+          <div className="container productpage-container">
+            <div className="product-details">
+              <div className="row">
+                <div className="col-4 ">
+                  <div className="image-container">
+                    <div
+                      className="img-magnifier-container"
+                      onMouseEnter={() => {
+                        magnify("big-image", 1.5);
+                      }}
+                      onMouseLeave={() => {
+                        if (
+                          document.getElementById("img-magnifier-glass") !==
+                          null
+                        ) {
+                          document
+                            .getElementById("img-magnifier-glass")
+                            .remove();
+                        }
+                      }}
+                    >
+                      <img
+                        alt={product.name}
+                        id="big-image"
+                        className="big-image"
+                        src={
+                          typeof product.images[0] === "undefined"
+                            ? ""
+                            : product.images[0].src
+                        }
+                      ></img>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-4 col-desc">
+                  <div className="product-description">
+                    <h2>{product.name}</h2>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: product.description }}
+                    ></p>
+                    <>
+                      <p>
+                        <span>BDT. </span>
+                        {product.regular_price === product.price ? (
+                          <span style={{ fontSize: "30px" }}>
+                            {product.price}
+                          </span>
+                        ) : (
+                          <>
+                            <strike>
+                              <span style={{ fontSize: "20px" }}>
+                                {product.regular_price}
+                              </span>
+                            </strike>
+                            <span id="price" style={{ fontSize: "30px" }}>
+                              {product.price}
+                            </span>
+                          </>
+                        )}
+                      </p>
+                    </>
+                    {product.stock_quantity === null ||
+                    product.stock_quantity > 0 ? (
+                      <>
+                        <h3
+                          className="btn"
+                          onClick={() => {
+                            addtocart({
+                              id: product.id,
+                              name: product.name,
+                              price: parseInt(product.price),
+                              quantity: 1,
+                              stock: product.stock_quantity,
+                              img:
+                                typeof product.images[0] === "undefined"
+                                  ? ""
+                                  : product.images[0].src,
+                            });
+                          }}
+                        >
+                          Add to Cart
+                        </h3>
+                        <h3
+                          className="btn btn-orrange"
+                          onClick={() => {
+                            addtocart({
+                              id: product.id,
+                              name: product.name,
+                              price: parseInt(product.price),
+                              quantity: 1,
+                              stock: product.stock_quantity,
+                              img:
+                                typeof product.images[0] === "undefined"
+                                  ? ""
+                                  : product.images[0].src,
+                            });
+                            history.push("/cart");
+                          }}
+                        >
+                          Buy Now
+                        </h3>
+                      </>
+                    ) : (
+                      <h3 className="btn">Stock Out</h3>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className="col-4 col-desc">
-                <div className="product-description">
-                  <h2>{product.name}</h2>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: product.description }}
-                  ></p>
-                  <>
-                    <p>
-                      <span>BDT. </span>
-                      {product.regular_price === product.price ? (
-                        <span style={{ fontSize: "30px" }}>
-                          {product.price}
-                        </span>
-                      ) : (
-                        <>
-                          <strike>
-                            <span style={{ fontSize: "20px" }}>
-                              {product.regular_price}
-                            </span>
-                          </strike>
-                          <span id="price" style={{ fontSize: "30px" }}>
-                            {product.price}
-                          </span>
-                        </>
-                      )}
-                    </p>
-                  </>
-                  {product.stock_quantity === null ||
-                  product.stock_quantity > 0 ? (
-                    <>
-                      <h3
-                        className="btn"
-                        onClick={() => {
-                          addtocart({
-                            id: product.id,
-                            name: product.name,
-                            price: parseInt(product.price),
-                            quantity: 1,
-                            stock: product.stock_quantity,
-                            img:
-                              typeof product.images[0] === "undefined"
-                                ? ""
-                                : product.images[0].src,
-                          });
-                        }}
-                      >
-                        Add to Cart
-                      </h3>
-                      <h3
-                        className="btn btn-orrange"
-                        onClick={() => {
-                          addtocart({
-                            id: product.id,
-                            name: product.name,
-                            price: parseInt(product.price),
-                            quantity: 1,
-                            stock: product.stock_quantity,
-                            img:
-                              typeof product.images[0] === "undefined"
-                                ? ""
-                                : product.images[0].src,
-                          });
-                          history.push("/cart");
-                        }}
-                      >
-                        Buy Now
-                      </h3>
-                    </>
-                  ) : (
-                    <h3 className="btn">Stock Out</h3>
-                  )}
-                </div>
-              </div>
             </div>
+            <Related_Products
+              categoryId={product.categories[0].id}
+              productId={product.id}
+            ></Related_Products>
           </div>
-          <Related_Products
-            categoryId={product.categories[0].id}
-            productId={product.id}
-          ></Related_Products>
         </div>
-      </div>
-      <Newsletter></Newsletter>
+        <Newsletter></Newsletter>
+      </section>
     </>
   );
 }

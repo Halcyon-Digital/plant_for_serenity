@@ -1,11 +1,13 @@
 .nav-header {
+  position: fixed;
+    width: 90%;
   padding: 0px 5%;
   background-color: #ffff;
   z-index: 9999;
 }
 
 .nav-bar {
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 
 .logo {}
@@ -19,7 +21,7 @@
 
 .menu-item {
   display: inline-block;
-  padding: 10px 30px;
+  padding: 0px 30px;
 }
 
 .right-side .menu-item {
@@ -65,15 +67,32 @@
   line-height: 8px;
   padding: 4px;
 }
+.mobile-show{
+  display: none;
+}
 
 @media only screen and (max-width: 1075px) {
+  .mobile-show
+  {
+    display: block;
+  }
   .mobile-menu {
     margin-left: -28px;
     display: block;
     list-style: none;
   }
   .menu-icon {
+    flex-basis: 33% !important;
     display: block;
+  }
+  .logo{
+    flex-basis: 33%!important;
+  }
+  .mobile-icons{
+    flex-basis: 33%!important;
+  }
+  .mobile-icons .row{
+    justify-content: flex-end;
   }
   .sub-menu {
     width: 0px;
@@ -89,3 +108,15 @@
     text-align: left;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

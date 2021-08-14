@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import { HashLink } from "react-router-hash-link";
 const proxy = process.env.REACT_APP_PROXY;
 const ck = process.env.REACT_APP_CK;
 const cs = process.env.REACT_APP_CS;
@@ -73,8 +74,9 @@ export default function Related_Products(props) {
                 .filter((x) => x.id !== props.productId)
                 .map((product, key) => (
                   <div key={key} className="card-item">
-                    <Link
+                    <HashLink
                       style={{ textDecoration: "none" }}
+                      smooth
                       to={{
                         pathname: `/product/${product.id}`,
                         hash: `${product.name}`,
@@ -121,7 +123,7 @@ export default function Related_Products(props) {
                           )}
                         </p>
                       </div>
-                    </Link>
+                    </HashLink>
                   </div>
                 ))}
             </Carousel>

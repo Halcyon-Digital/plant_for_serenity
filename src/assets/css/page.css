@@ -1,10 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.website {
+  max-width: 1350px;
+  margin: auto;
+}
+
 * {
   font-family: "poppins";
-  word-break: break-all;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .main {
+  padding-top: 103px;
   background-color: #f4efe9;
   background-image: url(../images/background/line-art.png);
   background-repeat: repeat-y;
@@ -132,7 +139,7 @@ button {
   font-size: 30px;
   margin: 50px auto;
   position: relative;
-  line-height: 60px;
+  line-height: 1;
   color: #000;
 }
 
@@ -166,6 +173,14 @@ button {
 
 .hero-area .slider .row {
   text-align: left;
+}
+
+.home-page {
+  margin-top: 80px;
+}
+
+.product-container {
+  margin-top: 80px;
 }
 
 .card-item {
@@ -212,6 +227,7 @@ button {
 .category-container {
   width: inherit;
   margin: auto;
+  margin-top: 80px;
 }
 
 .category-container .card-item {
@@ -320,6 +336,10 @@ button {
   height: auto;
 }
 
+.blog-section {
+  margin-top: 80px;
+}
+
 .blog-section .react-multi-carousel-list ul li {
   width: 325px !important;
   text-align: center;
@@ -327,9 +347,18 @@ button {
 
 .blog-section .react-multi-carousel-list ul li .card-item {
   width: 300px;
-  height: 600px;
+  height: 400px;
   overflow: hidden;
 }
+
+.blog-section .react-multi-carousel-list ul li .card-item h2 {
+  font-size: 16px;
+}
+
+.blog-section .react-multi-carousel-list ul li .card-item p {
+  font-size: 14px;
+}
+
 .blog-section .react-multi-carousel-list ul li .card-item img {
   width: 300px;
   height: 200px;

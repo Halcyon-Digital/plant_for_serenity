@@ -7,6 +7,12 @@
   text-align: left;
   bottom: 0px;
 }
+.footer .title{
+  margin:0px;
+}
+.footer .col-3, .footer .col-2{
+  align-self: flex-start;
+} 
 .footer a{
   color: gray;
 }
@@ -53,7 +59,7 @@
   font-size: 12px;
 }
 .social-links{
-  justify-content: center;
+  justify-content: center !important;
 }
 .social-links img{
 width: 20px;

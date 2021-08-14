@@ -135,7 +135,7 @@ export default function Cart() {
       <div className="container">
         <div className="cart-page">
           <div className="row ">
-            <div className="col-6 cart-item-list">
+            <div className="col-6 cart-item-list fb-100">
               <div className="row">
                 <h1>Plants </h1>
               </div>
@@ -210,7 +210,7 @@ export default function Cart() {
                 ))
               )}
             </div>
-            <div className="col-4 summery-section">
+            <div className="col-4 summery-section fb-100">
               <div className="cart-summery">
                 <h2>Cart Summery</h2> <br />
                 <div className="row">
