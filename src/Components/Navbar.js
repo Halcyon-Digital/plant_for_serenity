@@ -4,11 +4,13 @@ import logo from "../assets/images/background/logo.png";
 import search from "../assets/images/icons/search-icon.PNG";
 import cart from "../assets/images/icons/cart-icon.PNG";
 import menu from "../assets/images/icons/menu.webp";
+import cross_button from "../assets/images/icons/cross_button.webp";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const history = useHistory();
   const [showNav, setshowNav] = useState(false);
   function tooglenav() {
     setshowNav(!showNav);
@@ -24,7 +26,11 @@ export default function Navbar() {
                 tooglenav();
               }}
             >
-              <img src={menu} alt="menu bar"></img>
+              {showNav ? (
+                <img src={cross_button} alt="cross bar"></img>
+              ) : (
+                <img src={menu} alt="menu bar"></img>
+              )}
             </span>
           </div>
           <div className="col-2 logo">
@@ -36,11 +42,8 @@ export default function Navbar() {
           </div>
           <div className="col-2 mobile-icons mobile-show">
             <div className="row">
-              <Link to="/search" className="nav-link">
-                <img src={search}></img>
-              </Link>
               <Link to="/cart" className="nav-link">
-                <img src={cart}></img>
+                <img src={cart} alt="cart-icon"></img>
                 <span className="cart-text">
                   {JSON.parse(sessionStorage.getItem("itemlist")) === null
                     ? 0
@@ -49,12 +52,32 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
+          <div className="col-2 fb-100  mobile-show">
+            <form
+              className="nav-search"
+              onSubmit={(event) => {
+                event.preventDefault();
+                history.push(
+                  `/search_items/${
+                    document.getElementById("search_name").value
+                  }`
+                );
+              }}
+            >
+              <input
+                id="search_name"
+                type="text"
+                name="search"
+                placeholder="Search..."
+              ></input>
+            </form>
+          </div>
 
-          <div className="col-10">
+          <div className="col-6">
             <div className="row">
               <ul className="menu">
                 <li className="menu-item">
-                  <HashLink smooth to="/#"  className="nav-link">
+                  <HashLink smooth to="/#" className="nav-link">
                     Home
                   </HashLink>
                 </li>
@@ -72,7 +95,7 @@ export default function Navbar() {
                 </li>
                 <li className="menu-item">
                   <HashLink
-                  smooth
+                    smooth
                     to={{
                       pathname: "/category/76",
                       hash: "Decorations",
@@ -85,18 +108,35 @@ export default function Navbar() {
               </ul>
             </div>
           </div>
-          <div className="col-2">
+          <div className="col-4">
             <div className="row">
               <ul className="menu right-side">
                 <li className="menu-item">
-                  <Link to="/search" className="nav-link">
-                    <img src={search}></img>
-                  </Link>
+                  <div>
+                    <form
+                      className="nav-search"
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        history.push(
+                          `/search_items/${
+                            document.getElementById("search_name").value
+                          }`
+                        );
+                      }}
+                    >
+                      <input
+                        id="search_name"
+                        type="text"
+                        name="search"
+                        placeholder="Search.."
+                      ></input>
+                    </form>
+                  </div>
                 </li>
                 <li className="menu-item">
                   <Link to="/cart" className="nav-link">
                     <img src={cart}></img>
-                    <span className="cart-text">
+                    <span className="cart-text desktop-cart-text">
                       {JSON.parse(sessionStorage.getItem("itemlist")) === null
                         ? 0
                         : JSON.parse(sessionStorage.getItem("itemlist")).length}
@@ -107,53 +147,50 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        {showNav ? (
-          <div className="">
-            <ul className="mobile-menu">
-              <li className="mobile-menu-item">
-                <Link
-                  to="/"
-                  className="nav-link"
-                  onClick={() => {
-                    tooglenav();
-                  }}
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="mobile-menu-item">
-                <Link
-                  to={{
-                    pathname: "/category/15",
-                    hash: "Houseplants",
-                  }}
-                  className="nav-link"
-                  onClick={() => {
-                    tooglenav();
-                  }}
-                >
-                  Houseplants
-                </Link>
-              </li>
-              <li className="mobile-menu-item">
-                <Link
-                  to={{
-                    pathname: "/category/76",
-                    hash: "Decorations",
-                  }}
-                  className="nav-link"
-                  onClick={() => {
-                    tooglenav();
-                  }}
-                >
-                  Decorations
-                </Link>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
+
+        <ul
+          className={showNav ? "mobile-menu show-mobile-menu" : "mobile-menu"}
+        >
+          <li className="mobile-menu-item">
+            <Link
+              to="/"
+              className="nav-link"
+              onClick={() => {
+                tooglenav();
+              }}
+            >
+              Home
+            </Link>
+          </li>
+          <li className="mobile-menu-item">
+            <Link
+              to={{
+                pathname: "/category/15",
+                hash: "Houseplants",
+              }}
+              className="nav-link"
+              onClick={() => {
+                tooglenav();
+              }}
+            >
+              Houseplants
+            </Link>
+          </li>
+          <li className="mobile-menu-item">
+            <Link
+              to={{
+                pathname: "/category/76",
+                hash: "Decorations",
+              }}
+              className="nav-link"
+              onClick={() => {
+                tooglenav();
+              }}
+            >
+              Decorations
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );

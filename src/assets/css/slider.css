@@ -23,6 +23,7 @@
   position: absolute;
   padding: 10px 0px;
   width: 100%;
+  max-width: 1350px;
   margin: auto;
   margin-top: -66px;
   text-align: center;

@@ -42,7 +42,7 @@ export default function Related_Products(props) {
     return (
       <div className="slider-product-container">
         <div className="row">
-          <h1 className="title">Loading</h1>
+          <h1 className="title">Loading...</h1>
         </div>
 
         <div className="row">

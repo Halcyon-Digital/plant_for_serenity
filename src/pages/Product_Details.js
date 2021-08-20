@@ -140,6 +140,10 @@ export default function Product_details(props) {
     document.getElementsByClassName("cart-text")[0].innerHTML = JSON.parse(
       sessionStorage.getItem("itemlist")
     ).length;
+    document.getElementsByClassName("desktop-cart-text")[0].innerHTML = JSON.parse(
+      sessionStorage.getItem("itemlist")
+    ).length;
+    
   }
   if (status !== "success") {
     return <div>Loading...</div>;

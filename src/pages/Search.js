@@ -11,11 +11,11 @@ const proxy = process.env.REACT_APP_PROXY;
 const ck = process.env.REACT_APP_CK;
 const cs = process.env.REACT_APP_CS;
 
-const fetchcategorywiseproductsdata = async (x) => {
-  var catid = x.queryKey[1];
+const fetchsearchproductsdata = async (x) => {
+  var keyword = x.queryKey[1];
   var page = x.queryKey[2];
   const data = await fetch(
-    `${proxy}wc/v3/products?category=${catid}&page=${page}&per_page=8&orderby=price&order=desc`,
+    `${proxy}wc/v3/products?search=${keyword}&page=${page}&per_page=8`,
     {
       headers: new Headers({
         Authorization: `Basic ${window.btoa(`${ck}:${cs}`)}`,
@@ -27,19 +27,11 @@ const fetchcategorywiseproductsdata = async (x) => {
 };
 
 export default function Categorywise_Products(props) {
-  const queryClient = useQueryClient();
-  var categoryimage;
-  if (typeof queryClient.getQueryData("categorydata") !== "undefined") {
-    categoryimage = queryClient
-      .getQueryData("categorydata")
-      .find((d) => d.id == props.match.params.categoryId);
-  }
-
   const [pagenumber, setpagenumber] = useState(1);
   useEffect(() => {}, [pagenumber]);
   const { data, status } = useQuery(
-    ["categorywiseproducts", props.match.params.categoryId, pagenumber],
-    fetchcategorywiseproductsdata
+    ["searchproducts", props.match.params.keyword, pagenumber],
+    fetchsearchproductsdata
   );
 
   if (status !== "success") {
@@ -56,39 +48,6 @@ export default function Categorywise_Products(props) {
     <>
       <section id={props.location.hash.replace("#", "").replace("%20", " ")}>
         <div className="main categorywise-product-page">
-          <div
-            className="hero-area"
-            style={{
-              backgroundImage: `url(${
-                typeof categoryimage === "undefined"
-                  ? hero1
-                  : categoryimage.image.src
-              })`,
-
-              backgroundBlendMode: "screen",
-              height: "250px",
-              width: "100%",
-            }}
-          >
-            <div className="hero-para">
-              <div className="row">
-                <h1 className="title">
-                  {props.location.hash.replace("#", " ").replace("%20", " ")}
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div className="row category-header">
-            <div className="col-2"></div>
-            <div className="col-6">
-              <p>
-                All Our Beautiful{" "}
-                {props.location.hash.replace("#", " ").replace("%20", " ")}(Even
-                they are not actually category)
-              </p>
-            </div>
-            <div className="col-4">({data.length} products)</div>
-          </div>
           <div className="container">
             {data.length === 0 ? (
               <>
@@ -115,7 +74,9 @@ export default function Categorywise_Products(props) {
                       onClick={() => {
                         setpagenumber((old) => old + 1);
                       }}
-                      style={{ cursor: "not-allowed" }}
+                      style={{
+                        visibility: data.length === 0 ? "hidden" : "visible",
+                      }}
                       disabled={data.length === 0}
                     >
                       &rarr;
@@ -187,6 +148,9 @@ export default function Categorywise_Products(props) {
                 <div className="row mt-40">
                   <button
                     className="btn"
+                    style={{
+                      visibility: pagenumber === 1 ? "hidden" : "visible",
+                    }}
                     onClick={() => setpagenumber((old) => Math.max(old - 1, 1))}
                     disabled={pagenumber === 1}
                   >

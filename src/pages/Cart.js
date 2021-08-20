@@ -78,6 +78,9 @@ export default function Cart() {
     document.getElementsByClassName("cart-text")[0].innerHTML = JSON.parse(
       sessionStorage.getItem("itemlist")
     ).length;
+    document.getElementsByClassName("desktop-cart-text")[0].innerHTML = JSON.parse(
+      sessionStorage.getItem("itemlist")
+    ).length;
   }
 
   function remove(id) {

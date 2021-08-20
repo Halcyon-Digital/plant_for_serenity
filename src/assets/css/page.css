@@ -372,7 +372,10 @@ button {
   background-color: #ce97a1;
   padding: 20px 0px;
 }
-
+.categorywise-product-page .title{
+  margin-top: 100px;
+  color:white;
+}
 .categorywise-product-page .container {
   padding-top: 50px;
 }

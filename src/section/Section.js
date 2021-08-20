@@ -6,6 +6,7 @@ import Product_Details from "../pages/Product_Details";
 import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Success from "../pages/Success";
+import Search from "../pages/Search";
 export default function Section() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function Section() {
       <Route path="/cart" exact component={Cart}></Route>
       <Route path="/checkout" exact component={Checkout}></Route>
       <Route path="/success" exact component={Success}></Route>
+      <Route path="/search_items/:keyword" exact component={Search}></Route>
     </>
   );
 }

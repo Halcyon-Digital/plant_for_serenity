@@ -1,16 +1,18 @@
 .nav-header {
   position: fixed;
-    width: 90%;
-  padding: 0px 5%;
+  width: 100%;
+  /* padding: 0px 5%; */
+  max-width: 1350px;
   background-color: #ffff;
   z-index: 9999;
 }
 
-.nav-bar {
-  /* padding: 20px 0; */
+.nav-bar .row {
+  justify-content: flex-end;
 }
 
-.logo {}
+.logo {
+}
 
 .menu {
   text-transform: uppercase;
@@ -56,6 +58,40 @@
 .mobile-menu-item {
   padding: 12px 0px;
 }
+.nav-search input[type=text] {
+  background-image: url(../images/icons/search-icon.PNG);
+  width: 0px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: black;
+  border: 0;
+  /* background-color: black; */
+  background-size: 24px 24px;
+  background-position: 7px 2px;
+  background-repeat: no-repeat;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: width 0.4s ease-in-out;
+}
+.mobile-show .nav-search input[type=text] {
+  background-image: url(../images/icons/search-icon.PNG);
+  width: 50%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: black;
+  border: 0;
+  /* background-color: black; */
+  background-size: 24px 24px;
+  background-position: 7px 7px;
+  background-repeat: no-repeat;
+  padding: 8px 35px;
+  cursor: pointer;
+  transition: width 0.4s ease-in-out;
+}
+.nav-search input[type=text]:focus {
+  width: 100%;
+  padding: 8px 30px;
+}
 
 .cart-text {
   margin-top: 5px;
@@ -67,31 +103,47 @@
   line-height: 8px;
   padding: 4px;
 }
-.mobile-show{
+.mobile-show {
   display: none;
 }
 
 @media only screen and (max-width: 1075px) {
-  .mobile-show
-  {
+  .nav-header {
+    width: 90%;
+    padding: 5px 5%;
+  }
+  .mobile-show {
     display: block;
   }
-  .mobile-menu {
+  /* .mobile-menu {
     margin-left: -28px;
     display: block;
     list-style: none;
+  } */
+  .mobile-menu {
+    position: fixed;
+    width: 100vw;
+    margin-top: 0;
+    background: white;
+    left: -415px;
+    display: block;
+    list-style: none;
+    transition: all 0.5s ease-out;
+  }
+  .show-mobile-menu {
+    left: 0;
   }
   .menu-icon {
     flex-basis: 33% !important;
     display: block;
   }
-  .logo{
-    flex-basis: 33%!important;
+  .logo {
+    flex-basis: 33% !important;
   }
-  .mobile-icons{
-    flex-basis: 33%!important;
+  .mobile-icons {
+    flex-basis: 33% !important;
   }
-  .mobile-icons .row{
+  .mobile-icons .row {
     justify-content: flex-end;
   }
   .sub-menu {
@@ -108,15 +160,3 @@
     text-align: left;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
